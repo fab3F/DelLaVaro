@@ -1,0 +1,8 @@
+name: DelLaVaro
+version: '${project.version}'
+main: fab3f.dellavaro.DelLaVaro
+api-version: 1.18
+prefix: Del La Varo
+authors: [ fab3F, Magie34 ]
+description: Ein unfassbar krasses Minecraft Plugin
+website: website.com
