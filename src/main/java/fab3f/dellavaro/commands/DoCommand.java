@@ -1,5 +1,6 @@
 package fab3f.dellavaro.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,50 +21,74 @@ public class DoCommand implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        String s = args[0];
 
-        if (args.length >= 1) {
-
-
-            if(s.startsWith("gm")){
-
-                if(player.isOp()) {
-
-                    if (s.equalsIgnoreCase("gm0")) {
-                        player.setGameMode(GameMode.SURVIVAL);
-                        player.sendMessage(prefix + "Spielmodus geändert!");
-                        return true;
-                    } else if (s.equalsIgnoreCase("gm1")) {
-                        player.setGameMode(GameMode.CREATIVE);
-                        player.sendMessage(prefix + "Spielmodus geändert!");
-                        return true;
-                    } else if (s.equalsIgnoreCase("gm2")) {
-                        player.setGameMode(GameMode.ADVENTURE);
-                        player.sendMessage(prefix + "Spielmodus geändert!");
-                        return true;
-                    } else if (s.equalsIgnoreCase("gm3")) {
-                        player.setGameMode(GameMode.SPECTATOR);
-                        player.sendMessage(prefix + "Spielmodus geändert!");
-                        return true;
+        if (player.isOp()) {
+            if (args.length == 1) {
+                performTheCommand(args[0], player, player);
+                return true;
+            } else if (args.length == 2) {
+                Player target = Bukkit.getPlayer(args[1]);
+                if(!(target == null)) {
+                    if (target.isOnline()) {
+                        performTheCommand(args[0], target, player);
                     } else {
-                        player.sendMessage(prefixError + "Kein passender Gamemode angegeben, z.B. /do gm1");
-                        return false;
+                        player.sendMessage(prefixError + "Dieser Spieler ist nicht online und/oder existiert nicht!");
                     }
-
                 }else{
-                    player.sendMessage(prefixError + "Du musst ein Operator sein, um deinen Spielmodus zu wechseln");
+                    player.sendMessage(prefixError + "Dieser Spieler ist nicht online und/oder existiert nicht!");
                 }
-
-
-            }else{
-                sendCommandUsage(sender);}
+                return true;
+            } else {
+                sendCommandUsage(player);
+                return true;
+            }
 
         } else {
-            sendCommandUsage(sender);}
-
-        return false;
+            player.sendMessage(prefixError + "Du musst ein Operator sein, um deinen Spielmodus zu wechseln");
+            return true;
+        }
     }
 
-    public static void sendCommandUsage(CommandSender sender){sender.sendMessage(prefixError + "Benutzung: /do <command>");}
+
+
+    public void performTheCommand(String command, Player target, Player sender){
+
+        if(command.equalsIgnoreCase("gm0")) {
+            target.setGameMode(GameMode.SURVIVAL);
+            target.sendMessage(prefix + "Spielmodus geändert!");
+            if(!(target == sender))
+                sender.sendMessage(prefix + "Spielmodus geändert!");
+        }
+        else if(command.equalsIgnoreCase("gm1")) {
+            target.setGameMode(GameMode.CREATIVE);
+            target.sendMessage(prefix + "Spielmodus geändert!");
+            if(!(target == sender))
+                sender.sendMessage(prefix + "Spielmodus geändert!");
+        }
+        else if(command.equalsIgnoreCase("gm2")) {
+            target.setGameMode(GameMode.ADVENTURE);
+            target.sendMessage(prefix + "Spielmodus geändert!");
+            if(!(target == sender))
+                sender.sendMessage(prefix + "Spielmodus geändert!");
+        }
+        else if(command.equalsIgnoreCase("gm3")) {
+            target.setGameMode(GameMode.SPECTATOR);
+            target.sendMessage(prefix + "Spielmodus geändert!");
+            if (!(target == sender))
+                sender.sendMessage(prefix + "Spielmodus geändert!");
+        }else if(command.equalsIgnoreCase("heal")){
+            target.setHealth(20);
+            target.setFoodLevel(20);
+            target.sendMessage(prefix + "Heilung erhalten!");
+            if (!(target == sender))
+                sender.sendMessage(prefix + "Der Spieler wurde geheilt!");
+        }else{
+            sendCommandUsage(sender);
+        }
+    }
+
+    public static void sendCommandUsage(Player p){
+        p.sendMessage(prefixError + "Bitte benutze '/do <befehl> <spieler (optional)>' zum Beispiel '/do gm1'");
+    }
 
 }

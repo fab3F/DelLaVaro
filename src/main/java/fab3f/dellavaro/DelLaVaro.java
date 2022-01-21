@@ -1,6 +1,8 @@
 package fab3f.dellavaro;
 
 import fab3f.dellavaro.commands.DoCommand;
+import fab3f.dellavaro.commands.HomeCommand;
+import fab3f.dellavaro.commands.SetHomeCommand;
 import fab3f.dellavaro.commands.TestCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,6 +23,8 @@ public final class DelLaVaro extends JavaPlugin {
         println(prefix + "Plugin aktiviert");
         getCommand("test").setExecutor(new TestCommand());
         getCommand("do").setExecutor(new DoCommand());
+        getCommand("home").setExecutor(new HomeCommand());
+        getCommand("sethome").setExecutor(new SetHomeCommand());
 
 
     }

@@ -10,9 +10,16 @@ website: https://github.com/fab3F/DelLaVaro
 commands:
   test:
     description: Führt einen Test aus.
-    usage: Use '/test'
+    usage: Benutze '/test'
 
   do:
-    description: Tut etwas ausführen. Du musst ein Operator sein, um /do auszuführen!
-    usage: Use '/do <command>'
-    aliases: ["gm0","gm1","gm2","gm3"]
+    description: Führt eine Operation aus. Du musst ein Operator sein, um '/do' auszuführen!
+    usage: Bitte benutze '/do <befehl> <spieler (optional)>' zum Beispiel '/do gm1'
+
+  home:
+    description: Teleportiert dich nach Hause!
+    usage: Bitte benutze '/home'. Du musst dein Zuhause erst mit '/sethome' setzten!
+
+  sethome:
+    description: Speichert deine aktuelle Position als Zuhause. Jetzt kannst du dich mit '/home' immer dorthin teleportieren!
+    usage: Bitte benutze '/sethome' um deine Position zu speichern.

@@ -20,6 +20,16 @@ public class TestCommand implements CommandExecutor {
      * @param label   Alias of the command which was used
      * @param args    Passed command arguments
      * @return true if a valid command, otherwise false
+     *
+     * Addition by fa3F
+     * Zum Beispiel bei dem DoCommand gebe ich selbstständig die
+     * richtige Benutzung des Befehls zurück, deswegen
+     * setzte ich 'return true' ein, damit die Benutzung aus
+     * der "plugin.yml" nicht auch noch ausgegeben wird.
+     * Trotzdem sollte die 'usage' in "plugin.yml" definiert
+     * werden damit sie bei z.B. '/help /do' für den Befehl
+     * angezeigt werden kann!
+     *
      */
 
 
@@ -27,8 +37,6 @@ public class TestCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         sender.sendMessage(prefix + "Test ausgeführt!");
-
-
-        return false;
+        return true;
     }
 }
