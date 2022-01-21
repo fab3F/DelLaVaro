@@ -5,4 +5,14 @@ api-version: 1.18
 prefix: Del La Varo
 authors: [ fab3F, Magie34 ]
 description: Ein unfassbar krasses Minecraft Plugin
-website: website.com
+website: https://github.com/fab3F/DelLaVaro
+
+commands:
+  test:
+    description: Führt einen Test aus.
+    usage: Use '/test'
+
+  do:
+    description: Tut etwas ausführen. Du musst ein Operator sein, um /do auszuführen!
+    usage: Use '/do <command>'
+    aliases: ["gm0","gm1","gm2","gm3"]
