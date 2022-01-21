@@ -88,7 +88,7 @@ public class DoCommand implements CommandExecutor {
     }
 
     public static void sendCommandUsage(Player p){
-        p.sendMessage(prefixError + "Bitte benutze '/do <befehl> <spieler (optional)>' zum Beispiel '/do gm1'");
+        p.sendMessage(prefixError + "Bitte benutze '/do <befehl> [spieler]'\nFolgende Möglichkeiten sind gegeben '/do <gm0 | gm1 | gm2 | gm3 | heal> [spieler]");
     }
 
 }

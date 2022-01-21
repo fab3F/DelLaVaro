@@ -14,7 +14,7 @@ commands:
 
   do:
     description: Führt eine Operation aus. Du musst ein Operator sein, um '/do' auszuführen!
-    usage: Bitte benutze '/do <befehl> <spieler (optional)>' zum Beispiel '/do gm1'
+    usage: Bitte benutze '/do <befehl> [spieler]' - Folgende Möglichkeiten sind gegeben '/do <gm0 | gm1 | gm2 | gm3 | heal> [spieler]
 
   home:
     description: Teleportiert dich nach Hause!
