@@ -1,14 +1,18 @@
 package fab3f.dellavaro.commands;
 
+import fab3f.dellavaro.DelLaVaro;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.ConfigurationOptions;
 import org.bukkit.entity.Player;
+
 
 import static fab3f.dellavaro.DelLaVaro.prefixError;
 
-public class HomeCommand implements CommandExecutor
-{
+public class HomeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -17,7 +21,15 @@ public class HomeCommand implements CommandExecutor
             return false;
         }
 
+        Player player = (Player) sender;
 
-        return false;
+
+
+
+        if (args.length == 0) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }
